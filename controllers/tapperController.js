@@ -1,18 +1,14 @@
 const Tappers = require('../models/tapperModel')
-const jwt = require('jsonwebtoken')
+//const jwt = require('jsonwebtoken')
 
-const createToken = (_id) => {
-  return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
-}
+// const createToken = (_id) => {
+//   return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
+// }
 
 const insertTapper = async (req, res) => {
 
-  console.log("req1")
-  console.log(req)
-
-
     const { name, tapperid } = req.body;
-
+    console.log(name+" "+tapperid)
 
     try {
       const dataObj = await Tappers.insert(name, tapperid)
