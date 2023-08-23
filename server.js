@@ -4,7 +4,7 @@ const cors = require('cors');
 const express = require('express')
 const mongoose = require('mongoose')
 
-const postRoutes = require('./routes/tappers')
+const tapperRoutes = require('./routes/tappers')
 
 
 
@@ -25,7 +25,7 @@ app.use(cors({
 
 // routes
 
-app.use('/api/user', tapperRoutes)
+app.use('/api/tapper', tapperRoutes)
 
 
 mongoose.set('strictQuery', true);
