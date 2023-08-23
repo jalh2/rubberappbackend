@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const tapperSchema = new Schema({
-  tapperid: {
+  id: {
     type: String,
     required: true,
   },
@@ -15,15 +15,15 @@ const tapperSchema = new Schema({
 
 
 // static insert method
-tapperSchema.statics.insert = async function( name, tapperid) {
+tapperSchema.statics.insert = async function( name, id) {
 
-  const exists = await this.findOne({ tapperid })
+  const exists = await this.findOne({ id })
 
   if (exists) {
     throw Error('Record Already Inserted')
   }
 
-  const post = await this.create({name, tapperid})
+  const post = await this.create({name, id})
 
   return post
 }

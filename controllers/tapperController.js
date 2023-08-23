@@ -7,11 +7,11 @@ const Tappers = require('../models/tapperModel')
 
 const insertTapper = async (req, res) => {
 
-    const { name, tapperid } = req.body;
-    console.log(name+" "+tapperid)
+    const { name, id } = req.body;
+    console.log(name+" "+id)
 
     try {
-      const dataObj = await Tappers.insert(name, tapperid)
+      const dataObj = await Tappers.insert(name, id)
       res.status(200).json(dataObj)
     } catch (error) {
       res.status(400).json({ error: error.message })
