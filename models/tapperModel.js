@@ -17,7 +17,7 @@ const tapperSchema = new Schema({
 // static insert method
 tapperSchema.statics.insert = async function(tapperid, name) {
 
-  const exists = await this.findOne({ tapper })
+  const exists = await this.findOne({ tapperid })
 
   if (exists) {
     throw Error('Record Already Inserted')
