@@ -70,4 +70,4 @@ recordSchema.statics.getRecord = async function(recordId) {
 }
 
 
-module.exports = mongoose.model('Records', tapperSchema, 'records')
+module.exports = mongoose.model('Records', recordSchema, 'records')
