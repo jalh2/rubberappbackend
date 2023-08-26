@@ -22,7 +22,7 @@ const insertRecord = async (req, res) => {
 
 const getRecords = async (req, res) => {
   const {tapperId} = req.params
-   
+   console.log(tapperId);
    try {
     const dataObj = await Records.getRecords(tapperId)
 
