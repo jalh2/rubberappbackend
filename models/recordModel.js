@@ -74,7 +74,7 @@ recordSchema.statics.getRecord = async function(recordId) {
 }
 
 recordSchema.statics.deleteOneRecord = async function (recordId) {
-  const deletedRecord = await this.findByIdAndDelete(recordId);
+  const deletedRecord = await this.deleteOne({ _id: recordId })
 
   if (deletedRecord) {
     return deletedRecord;
