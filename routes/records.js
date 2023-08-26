@@ -8,8 +8,8 @@ const router = express.Router()
 
 // tapper routes
 router.post('/insert', insertRecord)
-router.get('/getonerecord/:recordid', getRecord)
-router.get('/getallrecords/:recordId', getRecords)
+router.get('/getonerecord/:recordId', getRecord)
+router.get('/getallrecords/:tapperId', getRecords)
 router.get('/deleteallrecords/:recordid', deleteRecords)
 router.get('/deleteonerecord:recordid', deleteOneRecord)
 

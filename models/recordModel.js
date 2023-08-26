@@ -58,7 +58,7 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
 
 recordSchema.statics.getRecords = async function(tapperId) {
 
-  let query = { tapperId: tapperId };
+  let query = { tapperId };
   let docs = await this.find(query);
   return docs;
 }
