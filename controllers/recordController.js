@@ -58,10 +58,10 @@ const deleteRecords = async (req, res) => {
 }
 
 const deleteOneRecord = async (req, res) => {
-  const {recordId} = req.params
+  const {_id} = req.params
    
    try {
-    const dataObj = await Records.deleteOneRecord(recordId)
+    const dataObj = await Records.deleteOneRecord(_id)
 
     res.status(200).json(dataObj)
   } catch (error) {

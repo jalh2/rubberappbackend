@@ -73,11 +73,11 @@ recordSchema.statics.getRecord = async function(recordId) {
   return doc;
 }
 
-recordSchema.statics.deleteOneRecord = async function (recordId) {
-  const deletedRecord = await this.deleteOne({ _id: recordId })
+recordSchema.statics.deleteOneRecord = async function (_id) {
+  const deletedRecord = await this.deleteOne({ _id: _id })
 
   if (deletedRecord) {
-    return deletedRecord;
+    return "success";
   } else {
     throw Error('Record not found');
   }
