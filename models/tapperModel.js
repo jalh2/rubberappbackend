@@ -34,12 +34,12 @@ tapperSchema.statics.getAll = async function() {
   return docs;
 }
 
-tapperSchema.statics.deleteTapper = async function (tapperid) {
-  const exists = await this.findOne({ tapperid });
+tapperSchema.statics.deleteTapper = async function (id) {
+  const exists = await this.findOne({ id });
 
   if (exists) {
     // Delete the record if it exists
-    const deletedRecord = await this.findOneAndDelete({ tapperid });
+    const deletedRecord = await this.findOneAndDelete({ id });
     return deletedRecord;
   } else {
     throw Error('Record not found');

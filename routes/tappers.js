@@ -9,7 +9,7 @@ const router = express.Router()
 // tapper routes
 router.post('/insert', insertTapper)
 router.post('/get', getTappers)
-router.post('/delete', deleteTapper)
+router.get('/delete/:tapperId', deleteTapper)
 
 
 module.exports = router
