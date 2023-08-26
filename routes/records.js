@@ -10,8 +10,8 @@ const router = express.Router()
 router.post('/insert', insertRecord)
 router.get('/getonerecord/:recordId', getRecord)
 router.get('/getallrecords/:tapperId', getRecords)
-router.get('/deleteallrecords/:recordid', deleteRecords)
-router.get('/deleteonerecord:recordid', deleteOneRecord)
+router.get('/deleteallrecords/:tapperId', deleteRecords)
+router.get('/deleteonerecord:recordId', deleteOneRecord)
 
 
 module.exports = router
