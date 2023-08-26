@@ -84,8 +84,8 @@ recordSchema.statics.deleteOneRecord = async function (_id) {
 };
 
 
-recordSchema.statics.deleteRecords = async function (tapperId) {
-  const deletedRecords = await this.deleteMany({ tapperId });
+recordSchema.statics.deleteRecords = async function (id) {
+  const deletedRecords = await this.deleteMany({ tapperId: id });
 
   if (deletedRecords.deletedCount > 0) {
     return deletedRecords;

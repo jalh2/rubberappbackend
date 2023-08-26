@@ -10,7 +10,7 @@ const router = express.Router()
 router.post('/insert', insertRecord)
 router.get('/getonerecord/:recordId', getRecord)
 router.get('/getallrecords/:tapperId', getRecords)
-router.get('/deleteallrecords/:tapperId', deleteRecords)
+router.get('/deleteallrecords/:id', deleteRecords)
 router.get('/deleteonerecord/:_id', deleteOneRecord)
 
 

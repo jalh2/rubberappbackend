@@ -45,11 +45,11 @@ const getRecord = async (req, res) => {
 }
 
 const deleteRecords = async (req, res) => {
-  const {tapperId} = req.params;
+  const {id} = req.params;
     
 
    try {
-    const dataObj = await Records.deleteRecords(tapperId)
+    const dataObj = await Records.deleteRecords(id)
 
     res.status(200).json(dataObj)
   } catch (error) {
