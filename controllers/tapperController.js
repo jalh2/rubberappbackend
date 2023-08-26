@@ -30,9 +30,8 @@ const getTappers = async (req, res) => {
 }
 
 const deleteTapper = async (req, res) => {
-  const {tapperId} = req.params
+  const {id} = req.params
   
-  const id = tapperId;
   try {
    const dataObj = await Tappers.deleteTapper(id)
 
