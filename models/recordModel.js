@@ -4,31 +4,35 @@ const Schema = mongoose.Schema
 const recordSchema = new Schema({
   tapperName: {
     type: String,
-    required: true,
+    required: false,
   },
   tapperId: {
     type: String,
-    required: true,
+    required: false,
+  },
+  recordId: {
+    type: String,
+    required: false,
   },
   drc: {
     type: String,
-    required: true,
+    required: false,
   },
   latexVolume: {
     type: String,
-    required: true,
+    required: false,
   },
   dryrubberweight: {
     type: String,
-    required: true,
+    required: false,
   },
   date: {
     type: String,
-    required: true,
+    required: false,
   },
   time: {
     type: String,
-    required: true,
+    required: false,
   },
 })
 
