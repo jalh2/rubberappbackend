@@ -20,7 +20,6 @@ const insertRecord = async (req, res) => {
 }
 
 
-
 const getRecords = async (req, res) => {
   const {tapperId} = req.params
    
@@ -35,7 +34,7 @@ const getRecords = async (req, res) => {
 
 const getRecord = async (req, res) => {
   const {recordId} = req.params
-   
+   console.log(recordId);
    try {
     const dataObj = await Records.getRecord(recordId)
 
@@ -45,5 +44,32 @@ const getRecord = async (req, res) => {
   }
 }
 
+const deleteRecords = async (req, res) => {
+  const {tapperId} = req.params;
+    
 
-module.exports = { insertRecord, getRecords, getRecord }
+   try {
+    const dataObj = await Records.deleteRecords(tapperId)
+
+    res.status(200).json(dataObj)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+}
+
+const deleteOneRecord = async (req, res) => {
+  const {recordId} = req.params
+
+  const recordid = recordId;
+   
+   try {
+    const dataObj = await Records.deleteOneRecord(recordid)
+
+    res.status(200).json(dataObj)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+}
+
+
+module.exports = { insertRecord, getRecords, getRecord, deleteRecords, deleteOneRecord }

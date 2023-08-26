@@ -28,15 +28,23 @@ tapperSchema.statics.insert = async function( name, id) {
   return post
 }
 
-
-
-
 tapperSchema.statics.getAll = async function() {
 
   let docs = await this.find();
   return docs;
 }
 
+tapperSchema.statics.deleteTapper = async function (tapperid) {
+  const exists = await this.findOne({ tapperid });
+
+  if (exists) {
+    // Delete the record if it exists
+    const deletedRecord = await this.findOneAndDelete({ tapperid });
+    return deletedRecord;
+  } else {
+    throw Error('Record not found');
+  }
+};
 
 
 module.exports = mongoose.model('Tappers', tapperSchema, 'tappers')

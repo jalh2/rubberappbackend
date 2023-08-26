@@ -69,5 +69,25 @@ recordSchema.statics.getRecord = async function(recordId) {
   return doc;
 }
 
+recordSchema.statics.deleteOneRecord = async function (recordid) {
+  const deletedRecord = await this.findByIdAndDelete(recordid);
+
+  if (deletedRecord) {
+    return deletedRecord;
+  } else {
+    throw Error('Record not found');
+  }
+};
+
+
+recordSchema.statics.deleteRecords = async function (tapperId) {
+  const deletedRecords = await this.deleteMany({ tapperId });
+
+  if (deletedRecords.deletedCount > 0) {
+    return deletedRecords;
+  } else {
+    throw Error('No records found with the given tapperid');
+  }
+};
 
 module.exports = mongoose.model('Records', recordSchema, 'records')

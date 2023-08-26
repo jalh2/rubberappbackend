@@ -19,8 +19,6 @@ const insertTapper = async (req, res) => {
  
 }
 
-
-
 const getTappers = async (req, res) => {
   try {
     const dataObj = await Tappers.getAll()
@@ -31,5 +29,17 @@ const getTappers = async (req, res) => {
   }
 }
 
+const deleteTapper = async (req, res) => {
+  const {tapperId} = req.params
+  
+  const tapperid = tapperId;
+  try {
+   const dataObj = await Tappers.deleteTapper(tapperid)
 
-module.exports = { insertTapper, getTappers }
+   res.status(200).json(dataObj)
+ } catch (error) {
+   res.status(400).json({error: error.message})
+ }
+}
+
+module.exports = { insertTapper, getTappers, deleteTapper }
