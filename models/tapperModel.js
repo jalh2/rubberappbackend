@@ -10,12 +10,16 @@ const tapperSchema = new Schema({
   name: {
     type: String,
     required: true,
-  }
+  },
+  farm_id: {
+    type: String,
+    required: true,
+  },
 })
 
 
 // static insert method
-tapperSchema.statics.insert = async function( name, id) {
+tapperSchema.statics.insert = async function( name, id, farm_id) {
 
   const exists = await this.findOne({ id })
 
@@ -23,7 +27,7 @@ tapperSchema.statics.insert = async function( name, id) {
     throw Error('Record Already Inserted')
   }
 
-  const post = await this.create({name, id})
+  const post = await this.create({name, id, farm_id})
 
   return post
 }

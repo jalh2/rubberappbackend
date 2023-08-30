@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller functions
-const { insertRecord, getRecord, getRecords, deleteRecords,deleteOneRecord} = require('../controllers/recordController')
+const { insertRecord, getRecord, getRecords, deleteRecords,deleteOneRecord } = require('../controllers/recordController')
 
 const router = express.Router()
 

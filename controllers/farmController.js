@@ -1,17 +1,17 @@
-const Tappers = require('../models/tapperModel')
+const Farms = require('../models/farmModel')
 //const jwt = require('jsonwebtoken')
 
 // const createToken = (_id) => {
 //   return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
 // }
 
-const insertTapper = async (req, res) => {
+const insertFarm = async (req, res) => {
 
-    const { name, id, farm_id} = req.body;
-    console.log(name+" "+id+" "+farm_id)
+    const { name, id } = req.body;
+    console.log(name+" "+id)
 
     try {
-      const dataObj = await Tappers.insert(name, id, farm_id)
+      const dataObj = await Farms.insert(name, id)
       res.status(200).json(dataObj)
     } catch (error) {
       res.status(400).json({ error: error.message })
@@ -19,9 +19,10 @@ const insertTapper = async (req, res) => {
  
 }
 
-const getTappers = async (req, res) => {
+const getFarm = async (req, res) => {
   try {
-    const dataObj = await Tappers.getAll()
+    const { farm_id } = req.params
+    const dataObj = await Farms.getFarm(farm_id)
 
     res.status(200).json(dataObj)
   } catch (error) {
@@ -29,11 +30,11 @@ const getTappers = async (req, res) => {
   }
 }
 
-const deleteTapper = async (req, res) => {
-  const {id} = req.params
+const deleteFarm = async (req, res) => {
+  const { id } = req.params
   
   try {
-   const dataObj = await Tappers.deleteTapper(id)
+   const dataObj = await Farms.deleteFarm(id)
 
    res.status(200).json(dataObj)
  } catch (error) {
@@ -41,4 +42,4 @@ const deleteTapper = async (req, res) => {
  }
 }
 
-module.exports = { insertTapper, getTappers, deleteTapper }
+module.exports = { insertFarm, getFarm, deleteFarm }

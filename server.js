@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 
 const tapperRoutes = require('./routes/tappers')
 const recordRoutes = require('./routes/records')
+const farmRoutes = require('./routes/farms')
 
 // express app
 const app = express()
@@ -26,6 +27,7 @@ app.use(cors({
 
 app.use('/api/tapper', tapperRoutes)
 app.use('/api/record', recordRoutes)
+app.use('/api/farm', farmRoutes)
 
 mongoose.set('strictQuery', true);
 
