@@ -19,6 +19,20 @@ const insertFarm = async (req, res) => {
  
 }
 
+const updateFarm1 = async (req, res) => {
+
+    const { farm_id, marketprice1, marketprice2, marketprice3, marketprice4, marketprice5, buyingprice } = req.body;
+    console.log(farm_id+" "+marketprice1+" "+marketprice2+" "+marketprice3+" "+marketprice4+" "+marketprice5+" "+buyingprice)
+
+    try {
+      const dataObj = await Farms.update1(name, id)
+      res.status(200).json(dataObj)
+    } catch (error) {
+      res.status(400).json({ error: error.message })
+    }
+ 
+}
+
 const getFarm = async (req, res) => {
   try {
     const { farm_id } = req.params
@@ -42,4 +56,4 @@ const deleteFarm = async (req, res) => {
  }
 }
 
-module.exports = { insertFarm, getFarm, deleteFarm }
+module.exports = { insertFarm, getFarm, deleteFarm, updateFarm1 }
