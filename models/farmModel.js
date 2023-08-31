@@ -77,19 +77,22 @@ farmSchema.statics.getFarm = async function(farm_id) {
 farmSchema.statics.updateFarm1 = async function(farm_id, marketprice1, marketprice2, marketprice3, marketprice4, marketprice5, buyingprice) {
   try {
     // Find farms with the given farm_id
-    const farmToUpdate = await this.findOne({ farm_id });
+   
 
-    // Update each farm's market prices and buying price
-    if (farmToUpdate) {
-      farm.marketprice1 = marketprice1;
-      farm.marketprice2 = marketprice2;
-      farm.marketprice3 = marketprice3;
-      farm.marketprice4 = marketprice4;
-      farm.marketprice5 = marketprice5;
-      farm.buyingprice = buyingprice;
+    const filter = { farm_id: farm_id };
+    const update = {
+      marketprice1: marketprice1,
+      marketprice2: marketprice2,
+      marketprice3: marketprice3,
+      marketprice4: marketprice4,
+      marketprice5: marketprice5,
+      buyingprice: buyingprice,
+    };
 
-      await farmToUpdate.save(); // Save the updated farm
-    }
+    const farmToUpdate = await this.findOneAndUpdate(filter, update, {
+      new: true
+    });
+
 
     return farmToUpdate; // Return the updated farms
   } catch (error) {
