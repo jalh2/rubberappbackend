@@ -25,7 +25,7 @@ const updateFarm1 = async (req, res) => {
     console.log(farm_id+" "+marketprice1+" "+marketprice2+" "+marketprice3+" "+marketprice4+" "+marketprice5+" "+buyingprice)
 
     try {
-      const dataObj = await Farms.update1(name, id)
+      const dataObj = await Farms.update1(farm_id, marketprice1, marketprice2, marketprice3, marketprice4, marketprice5, buyingprice)
       res.status(200).json(dataObj)
     } catch (error) {
       res.status(400).json({ error: error.message })
