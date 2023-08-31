@@ -113,6 +113,7 @@ farmSchema.statics.update2 = async function(farm_id, firestoneprice) {
     const filter = { farm_id: farm_id };
     const update = {
       firestoneprice: firestoneprice,
+      buyingprice: firestoneprice,
       using: "firestone",
     };
 
