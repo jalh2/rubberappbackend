@@ -89,7 +89,7 @@ farmSchema.statics.updateFarm1 = async function(farm_id, marketprice1, marketpri
       buyingprice: buyingprice,
     };
 
-    const farmToUpdate = await this.findOneAndUpdate(filter, update, {
+    let farmToUpdate = await this.findOneAndUpdate(filter, update, {
       new: true
     });
 
