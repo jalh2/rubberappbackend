@@ -74,7 +74,7 @@ farmSchema.statics.getFarm = async function(farm_id) {
   return docs;
 }
 
-farmSchema.statics.updateFarm1 = async function(farm_id, marketprice1, marketprice2, marketprice3, marketprice4, marketprice5, buyingprice) {
+farmSchema.statics.update1 = async function(farm_id, marketprice1, marketprice2, marketprice3, marketprice4, marketprice5, buyingprice) {
   try {
     // Find farms with the given farm_id
    
