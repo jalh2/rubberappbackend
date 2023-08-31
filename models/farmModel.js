@@ -9,47 +9,47 @@ const farmSchema = new Schema({
   },
   buyingprice: {
     type: Number,
-    required: true,
+    required: false,
   },
   marketprice1:{
     type: Number,
-    require: true,
+    require: false,
   },
   marketprice2:{
     type: Number,
-    require: true,
+    require: false,
   },
   marketprice3:{
     type: Number,
-    require: true,
+    require: false,
   },
   marketprice4:{
     type: Number,
-    require: true,
+    require: false,
   },
   marketprice5:{
     type: Number,
-    require: true,
+    require: false,
   },
   totalweight:{
     type: Number,
-    require: true,
+    require: false,
   },
   pricesold:{
     type: Number,
-    require: true,
+    require: false,
   },
   tappercount:{
     type: Number,
-    require: true,
+    require: false,
   },
   firestoneprice:{
     type: Number,
-    require: true,
+    require: false,
   },
   manual_buyingprice:{
     type: Number,
-    require: true,
+    require: false,
   }
 })
 
