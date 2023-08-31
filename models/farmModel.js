@@ -100,6 +100,28 @@ farmSchema.statics.update1 = async function(farm_id, marketprice1, marketprice2,
   }
 };
 
+farmSchema.statics.update2 = async function(farm_id, firestoneprice) {
+  try {
+    // Find farms with the given farm_id
+   
+
+    const filter = { farm_id: farm_id };
+    const update = {
+      firestoneprice: firestoneprice,
+    };
+
+    let farmToUpdate = await this.findOneAndUpdate(filter, update, {
+      new: true
+    });
+
+
+    return farmToUpdate; // Return the updated farms
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+
 farmSchema.statics.deleteFarm = async function (id) {
   const exists = await this.findOne({ id });
 

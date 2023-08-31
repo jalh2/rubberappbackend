@@ -33,6 +33,20 @@ const updateFarm1 = async (req, res) => {
  
 }
 
+const updateFarm2 = async (req, res) => {
+
+    const { farm_id, firestoneprice } = req.body;
+    console.log(farm_id+" "+firestoneprice)
+
+    try {
+      const dataObj = await Farms.update2(farm_id, firestoneprice)
+      res.status(200).json(dataObj)
+    } catch (error) {
+      res.status(400).json({ error: error.message })
+    }
+ 
+}
+
 const getFarm = async (req, res) => {
   try {
     const { farm_id } = req.params
@@ -56,4 +70,4 @@ const deleteFarm = async (req, res) => {
  }
 }
 
-module.exports = { insertFarm, getFarm, deleteFarm, updateFarm1 }
+module.exports = { insertFarm, getFarm, deleteFarm, updateFarm1, updateFarm2 }
