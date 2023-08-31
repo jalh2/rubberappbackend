@@ -109,7 +109,6 @@ farmSchema.statics.update2 = async function(farm_id, firestoneprice) {
   try {
     // Find farms with the given farm_id
    
-
     const filter = { farm_id: farm_id };
     const update = {
       firestoneprice: firestoneprice,
@@ -121,6 +120,25 @@ farmSchema.statics.update2 = async function(farm_id, firestoneprice) {
       new: true
     });
 
+    return farmToUpdate; // Return the updated farms
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+farmSchema.statics.update3 = async function(farm_id, manual_buyingprice) {
+  try {
+    // Find farms with the given farm_id
+    const filter = { farm_id: farm_id };
+    const update = {
+      manual_buyingprice: manual_buyingprice,
+      buyingprice: manual_buyingprice,
+      using: "manual price",
+    };
+
+    let farmToUpdate = await this.findOneAndUpdate(filter, update, {
+      new: true
+    });
 
     return farmToUpdate; // Return the updated farms
   } catch (error) {
