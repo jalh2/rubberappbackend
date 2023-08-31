@@ -50,6 +50,10 @@ const farmSchema = new Schema({
   manual_buyingprice:{
     type: Number,
     require: false,
+  },
+  using:{
+    type: String,
+    require: false,
   }
 })
 
@@ -87,6 +91,7 @@ farmSchema.statics.update1 = async function(farm_id, marketprice1, marketprice2,
       marketprice4: marketprice4,
       marketprice5: marketprice5,
       buyingprice: buyingprice,
+      using: "5 average"
     };
 
     let farmToUpdate = await this.findOneAndUpdate(filter, update, {
@@ -108,6 +113,7 @@ farmSchema.statics.update2 = async function(farm_id, firestoneprice) {
     const filter = { farm_id: farm_id };
     const update = {
       firestoneprice: firestoneprice,
+      using: "firestone",
     };
 
     let farmToUpdate = await this.findOneAndUpdate(filter, update, {
