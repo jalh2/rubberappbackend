@@ -7,11 +7,11 @@ const Records = require('../models/recordModel')
 
 const insertRecord = async (req, res) => {
 
-    const { tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, farm_id } = req.body;
-    console.log(tapperName+" "+tapperId+" "+drc+" "+latexVolume+" "+dryrubberweight+" "+date+" "+time)
+    const { tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, buyingprice, farm_id } = req.body;
+    console.log(tapperName+" "+tapperId+" "+drc+" "+latexVolume+" "+dryrubberweight+" "+date+" "+time+" "+buyingprice)
 
     try {
-      const dataObj = await Records.insert(tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, farm_id)
+      const dataObj = await Records.insert(tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, buyingprice, farm_id)
       res.status(200).json(dataObj)
     } catch (error) {
       res.status(400).json({ error: error.message })
