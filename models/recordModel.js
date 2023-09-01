@@ -64,21 +64,6 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
   return post
 }
 
-recordSchema.statics.incrementTapperCount = async function( farm_id ) {
-
-  const filter = { farm_id: farm_id };
-  // const update = increment;
-  try {
-    const doc = await this.findOneAndUpdate(filter, { $inc: { tappercount: 1 } },{
-      new: true
-    });
-    return doc;
-  } catch (error) {
-    return error.message;
-  }
-}
-
-
 
 recordSchema.statics.getRecords = async function(tapperId) {
 

@@ -72,6 +72,20 @@ farmSchema.statics.insert = async function( name, id) {
   return post
 }
 
+farmSchema.statics.incrementTapperCount = async function( farm_id ) {
+
+  const filter = { farm_id: farm_id };
+  // const update = increment;
+  try {
+    const doc = await this.findOneAndUpdate(filter, { $inc: { tappercount: 1 } },{
+      new: true
+    });
+    return doc;
+  } catch (error) {
+    return error.message;
+  }
+}
+
 farmSchema.statics.getFarm = async function(farm_id) {
 
   let docs = await this.findOne({ farm_id });
