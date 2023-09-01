@@ -67,7 +67,7 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
 recordSchema.statics.incrementTapperCount = async function( farm_id ) {
 
   try {
-    const farm = await Farm.findOne({ farm_id: farm_id });
+    const farm = await this.findOne({ farm_id: farm_id });
 
     if (!farm) {
       throw new Error('Farm not found'); // Handle the case where farm is not found
