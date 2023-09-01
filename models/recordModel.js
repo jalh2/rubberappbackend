@@ -66,22 +66,15 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
 
 recordSchema.statics.incrementTapperCount = async function( farm_id ) {
 
+  const filter = { farm_id: farm_id };
+  // const update = increment;
   try {
-    const farm = await this.findOne({ farm_id: farm_id });
-
-    if (!farm) {
-      throw new Error('Farm not found'); // Handle the case where farm is not found
-    }
-
-    // Increment tapperCount by 1
-    farm.tappercount += 1;
-
-    // Save the updated farm document
-    await farm.save();
-
-    return farm;
+    const doc = await this.findOneAndUpdate(filter, { $inc: { [tappercount]: 1 } },{
+      new: true
+    });
+    return doc;
   } catch (error) {
-    throw error; // Rethrow the error to handle it in the controller
+    return error.message;
   }
 }
 
