@@ -69,7 +69,7 @@ recordSchema.statics.incrementTapperCount = async function( farm_id ) {
   const filter = { farm_id: farm_id };
   // const update = increment;
   try {
-    const doc = await this.findOneAndUpdate(filter, { $inc: { [tappercount]: 1 } },{
+    const doc = await this.findOneAndUpdate(filter, { $inc: { tappercount: 1 } },{
       new: true
     });
     return doc;
