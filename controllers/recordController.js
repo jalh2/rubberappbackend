@@ -19,6 +19,20 @@ const insertRecord = async (req, res) => {
  
 }
 
+const incrementTapperCount = async (req, res) => {
+
+  const { farm_id } = req.body;
+  console.log(farm_id)
+
+    try {
+      const dataObj = await Records.incrementTapperCount(farm_id)
+      res.status(200).json(dataObj)
+    } catch (error) {
+      res.status(400).json({ error: error.message })
+    }
+ 
+}
+
 
 const getRecords = async (req, res) => {
   const {tapperId} = req.params
@@ -70,4 +84,4 @@ const deleteOneRecord = async (req, res) => {
 }
 
 
-module.exports = { insertRecord, getRecords, getRecord, deleteRecords, deleteOneRecord }
+module.exports = { insertRecord, getRecords, getRecord, deleteRecords, deleteOneRecord, incrementTapperCount }
