@@ -50,7 +50,7 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
 
   const exists = await this.findOne({ tapperId: tapperId, date: new Date(date) })
 
-  const date = new Date(date);
+  const ndate = new Date(date);
 
     if (exists) {
       // Update the existing record
@@ -66,7 +66,7 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
       return exists; // Return the updated record
   }
 
-  const post = await this.create({tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, buyingprice, farm_id})
+  const post = await this.create({tapperName, tapperId, drc, latexVolume, dryrubberweight, {date: ndate}, time, buyingprice, farm_id})
 
   return post
 }
