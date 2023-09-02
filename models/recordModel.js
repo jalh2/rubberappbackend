@@ -77,6 +77,13 @@ recordSchema.statics.getRecords = async function(tapperId) {
   return docs;
 }
 
+recordSchema.statics.getDailys = async function(date, farm_id) {
+
+  let query = { date: date, farm_id: farm_id };
+  let docs = await this.find(query);
+  return docs;
+}
+
 recordSchema.statics.getRecord = async function(recordId) {
   
   let doc = await this.findOne({ recordId });

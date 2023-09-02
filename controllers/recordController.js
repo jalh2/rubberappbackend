@@ -20,6 +20,20 @@ const insertRecord = async (req, res) => {
 }
 
 
+const getdailyRecords = async (req, res) => {
+
+  const {  date, farm_id } = req.body;
+  console.log( date+" "+farm_id)
+
+  try {
+    const dataObj = await Records.getDailys( date, farm_id)
+    res.status(200).json(dataObj)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+
+}
+
 
 const getRecords = async (req, res) => {
   const {tapperId} = req.params
@@ -71,4 +85,4 @@ const deleteOneRecord = async (req, res) => {
 }
 
 
-module.exports = { insertRecord, getRecords, getRecord, deleteRecords, deleteOneRecord }
+module.exports = { insertRecord, getRecords, getRecord, deleteRecords, deleteOneRecord, getdailyRecords }
