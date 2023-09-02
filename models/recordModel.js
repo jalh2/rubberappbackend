@@ -109,6 +109,29 @@ recordSchema.statics.getWeeklys = async function(date, farm_id) {
   return docs;
 };
 
+recordSchema.statics.getMonthlys = async function(date, farm_id) {
+ 
+  const selectedDate = new Date(date);
+
+ 
+  const endDate = new Date(selectedDate);
+  endDate.setDate(selectedDate.getDate() + 30);
+
+ 
+  const query = {
+    farm_id: farm_id,
+    date: {
+      $gte: new Date(selectedDate.toISOString().slice(0, 10)), 
+      $lte: new Date(endDate.toISOString().slice(0, 10)),     
+    },
+  };
+
+  const docs = await this.find(query);
+
+  return docs;
+};
+
+
 
 recordSchema.statics.getRecord = async function(recordId) {
   
