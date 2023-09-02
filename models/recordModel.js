@@ -84,6 +84,30 @@ recordSchema.statics.getDailys = async function(date, farm_id) {
   return docs;
 }
 
+recordSchema.statics.getWeeklys = async function(date, farm_id) {
+  // Parse the date string into a JavaScript Date object
+  const selectedDate = new Date(date);
+
+  // Calculate the end date by adding 7 days to the selected date
+  const endDate = new Date(selectedDate);
+  endDate.setDate(selectedDate.getDate() + 7);
+
+  // Define the query to find records within the date range
+  const query = {
+    farm_id: farm_id,
+    date: {
+      $gte: new Date(selectedDate.toISOString().slice(0, 10)), // Greater than or equal to the selected date
+      $lte: new Date(endDate.toISOString().slice(0, 10)),     // Less than or equal to the end date
+    },
+  };
+
+  // Find documents matching the query
+  const docs = await this.find(query);
+
+  return docs;
+};
+
+
 recordSchema.statics.getRecord = async function(recordId) {
   
   let doc = await this.findOne({ recordId });
