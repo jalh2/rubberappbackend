@@ -66,7 +66,7 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
       return exists; // Return the updated record
   }
 
-  const post = await this.create({tapperName, tapperId, drc, latexVolume, dryrubberweight, {date: ndate}, time, buyingprice, farm_id})
+  const post = await this.create({tapperName, tapperId, drc, latexVolume, dryrubberweight, date: ndate, time, buyingprice, farm_id})
 
   return post
 }
