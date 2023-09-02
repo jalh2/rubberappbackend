@@ -27,7 +27,7 @@ const recordSchema = new Schema({
     required: false,
   },
   date: {
-    type: String,
+    type: Date,
     required: false,
   },
   time: {
@@ -48,7 +48,9 @@ const recordSchema = new Schema({
 // static insert method
 recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, buyingprice, farm_id) {
 
-  const exists = await this.findOne({ tapperId: tapperId, date: date })
+  const exists = await this.findOne({ tapperId: tapperId, date: new Date(date) })
+
+  const date = new Date(date);
 
     if (exists) {
       // Update the existing record
@@ -79,7 +81,7 @@ recordSchema.statics.getRecords = async function(tapperId) {
 
 recordSchema.statics.getDailys = async function(date, farm_id) {
 
-  let query = { date: date, farm_id: farm_id };
+  let query = { date: new Date(date), farm_id: farm_id };
   let docs = await this.find(query);
   return docs;
 }
