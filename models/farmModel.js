@@ -9,55 +9,66 @@ const farmSchema = new Schema({
   },
   buyingprice: {
     type: Number,
-    required: false,
+    default: 0, // Default value set to 0
   },
-  marketprice1:{
+  marketprice1: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  marketprice2:{
+  marketprice2: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  marketprice3:{
+  marketprice3: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  marketprice4:{
+  marketprice4: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  marketprice5:{
+  marketprice5: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  totalweight:{
+  totalweight: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  pricesold:{
+  pricesold: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  tappercount:{
+  tappercount: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  firestoneprice:{
+  firestoneprice: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  manual_buyingprice:{
+  manual_buyingprice: {
     type: Number,
-    require: false,
+    default: 0,
   },
-  using:{
+  using: {
     type: String,
-    require: false,
-  }
+    default: 'none', // Default string value set to 'none'
+  },
 })
 
+farmSchema.statics.create = async function (farm_id) {
+  try {
+    const farm = new this({
+      farm_id,
+    });
 
+    const result = await farm.save();
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
 // static insert method
 farmSchema.statics.insert = async function( name, id) {
 

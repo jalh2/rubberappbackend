@@ -1,13 +1,14 @@
 const express = require('express')
 
 // controller functions
-const { insertFarm, getFarm, updateFarm1, updateFarm2, updateFarm3, deleteFarm, incrementTapperCount, decrementTapperCount } = require('../controllers/farmController')
+const { insertFarm, getFarm, createFarm, updateFarm1, updateFarm2, updateFarm3, deleteFarm, incrementTapperCount, decrementTapperCount } = require('../controllers/farmController')
 
 const router = express.Router()
 
 
 // tapper routes
 router.post('/insert', insertFarm)
+router.post('/create', createFarm)
 router.post('/incrementtapper', incrementTapperCount)
 router.post('/decrementtapper', decrementTapperCount)
 router.post('/marketupdate', updateFarm1)

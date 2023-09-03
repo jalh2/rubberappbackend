@@ -19,6 +19,20 @@ const insertFarm = async (req, res) => {
  
 }
 
+const createFarm = async (req, res) => {
+
+  const { farm_id } = req.body;
+  console.log(farm_id)
+
+  try {
+    const dataObj = await Farms.create(farm_id)
+    res.status(200).json(dataObj)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+
+}
+
 const incrementTapperCount = async (req, res) => {
 
   const { farm_id } = req.body;
@@ -112,4 +126,4 @@ const deleteFarm = async (req, res) => {
  }
 }
 
-module.exports = { insertFarm, getFarm, deleteFarm, updateFarm1, updateFarm2, updateFarm3, incrementTapperCount, decrementTapperCount }
+module.exports = { insertFarm, createFarm, getFarm, deleteFarm, updateFarm1, updateFarm2, updateFarm3, incrementTapperCount, decrementTapperCount }
