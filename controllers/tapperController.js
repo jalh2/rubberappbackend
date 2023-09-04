@@ -20,8 +20,11 @@ const insertTapper = async (req, res) => {
 }
 
 const getTappers = async (req, res) => {
+
+  const { farm_id } = req.body;
+  console.log("farm id: "+farm_id)
   try {
-    const dataObj = await Tappers.getAll()
+    const dataObj = await Tappers.getAll(farm_id)
 
     res.status(200).json(dataObj)
   } catch (error) {
