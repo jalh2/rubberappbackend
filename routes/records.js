@@ -12,7 +12,7 @@ router.post('/getdailys', getdailyRecords)
 router.post('/getweeklys', getweeklyRecords)
 router.post('/getmonthlys', getmonthlyRecords)
 router.get('/getonerecord/:recordId', getRecord)
-router.get('/getallrecords/:tapperId', getRecords)
+router.post('/getallrecords', getRecords)
 router.get('/deleteallrecords/:id', deleteRecords)
 router.get('/deleteonerecord/:_id', deleteOneRecord)
 

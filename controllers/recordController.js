@@ -64,10 +64,10 @@ const getmonthlyRecords = async (req, res) => {
 
 
 const getRecords = async (req, res) => {
-  const {tapperId} = req.params
-   console.log(tapperId);
+  const {tapperId, date} = req.body
+   console.log(tapperId+" "+date);
    try {
-    const dataObj = await Records.getRecords(tapperId)
+    const dataObj = await Records.getRecords(tapperId, date)
 
     res.status(200).json(dataObj)
   } catch (error) {

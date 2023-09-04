@@ -72,10 +72,25 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
 }
 
 
-recordSchema.statics.getRecords = async function(tapperId) {
+recordSchema.statics.getRecords = async function(tapperId, date) {
 
-  let query = { tapperId };
-  let docs = await this.find(query);
+  const selectedDate = new Date(date);
+
+ 
+  const endDate = new Date(selectedDate);
+  endDate.setDate(selectedDate.getDate() + 30);
+
+ 
+  const query = {
+    tapperId: tapperId,
+    date: {
+      $gte: new Date(selectedDate.toISOString().slice(0, 10)), 
+      $lte: new Date(endDate.toISOString().slice(0, 10)),     
+    },
+  };
+
+  const docs = await this.find(query);
+
   return docs;
 }
 
