@@ -32,9 +32,9 @@ tapperSchema.statics.insert = async function( name, id, farm_id) {
   return post
 }
 
-tapperSchema.statics.getAll = async function() {
+tapperSchema.statics.getAll = async function(farm_id) {
 
-  let docs = await this.find();
+  let docs = await this.find({ farm_id });
   return docs;
 }
 
