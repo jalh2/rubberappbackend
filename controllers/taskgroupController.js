@@ -7,11 +7,11 @@ const TaskGroups = require('../models/taskModel')
 
 const inserttaskGroup = async (req, res) => {
 
-    const { farmgroupname, farmid, taskname, taskgroupname } = req.body;
-    console.log(farmgroupname+" "+farmid+" "+taskname+" "+taskgroupname);
+    const { farmgroupname, farmid, taskname, taskgroupname, id } = req.body;
+    console.log(farmgroupname+" "+farmid+" "+taskname+" "+taskgroupname+" "+id);
 
     try {
-      const dataObj = await TaskGroups.insertTaskGroup(farmgroupname, farmid, taskname, taskgroupname)
+      const dataObj = await TaskGroups.insertTaskGroup(farmgroupname, farmid, taskname, taskgroupname, id)
       res.status(200).json(dataObj)
     } catch (error) {
       res.status(400).json({ error: error.message })

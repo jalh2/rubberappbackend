@@ -19,19 +19,23 @@ const taskgroupSchema = new Schema({
     type: String,
     required: true, 
   },
+  id: {
+    type: String,
+    required: true,
+  },
 })
 
 
 // static insert method
-taskgroupSchema.statics.insertTaskGroup = async function( taskname, farmgroupname, farmid) {
+taskgroupSchema.statics.insertTaskGroup = async function(farmgroupname, farmid, taskname, taskgroupname, id) {
 
-  const exists = await this.findOne({ taskname, farmgroupname, farmid })
+  const exists = await this.findOne({ taskname, farmgroupname, farmid, taskgroupname })
 
   if (exists) {
     throw Error('Record Already Inserted')
   }
 
-  const post = await this.create({taskname, farmgroupname, farmid})
+  const post = await this.create({taskname, farmgroupname, farmid, taskgroupname, id})
 
   return post
 }
