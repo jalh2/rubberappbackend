@@ -59,4 +59,4 @@ taskSchema.statics.deleteTask = async function (id) {
 };
 
 
-module.exports = mongoose.model('tasks', taskSchema, 'tasks')
+module.exports = mongoose.model('Tasks', taskSchema, 'tasks')
