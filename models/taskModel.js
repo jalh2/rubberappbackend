@@ -23,7 +23,7 @@ const taskSchema = new Schema({
 
 
 // static insert method
-taskSchema.statics.insertTask = async function( taskname, farmgroupname, farmid, id) {
+taskSchema.statics.insertTask = async function( farmgroupname, farmid, taskname, id) {
 
   const exists = await this.findOne({ taskname, farmgroupname, farmid })
 
