@@ -11,7 +11,7 @@ const insertFarmgroups = async (req, res) => {
     console.log(farmgroupname+" "+farmid+" "+id)
 
     try {
-      const dataObj = await FarmGroups.insertFarmGroups(farmgroupname, farmid, id)
+      const dataObj = await FarmGroups.insertFarmGroup(farmgroupname, farmid, id)
       res.status(200).json(dataObj)
     } catch (error) {
       res.status(400).json({ error: error.message })
