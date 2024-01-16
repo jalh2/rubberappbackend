@@ -63,4 +63,4 @@ taskgroupSchema.statics.deleteTaskGroup = async function (id) {
 };
 
 
-module.exports = mongoose.model('taskgroups', taskgroupSchema, 'taskgroups')
+module.exports = mongoose.model('Taskgroups', taskgroupSchema, 'taskgroups')
