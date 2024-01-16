@@ -31,7 +31,7 @@ taskSchema.statics.insertTask = async function( taskname, farmgroupname, farmid,
     throw Error('Record Already Inserted')
   }
 
-  const post = await this.create({taskname, farmgroupname, farmid, id})
+  const post = await this.create({taskname:taskname, farmgroupname:farmgroupname, farmid:farmid, id:id})
 
   return post
 }
