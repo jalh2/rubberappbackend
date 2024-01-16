@@ -1,4 +1,4 @@
-const TaskGroups = require('../models/taskgroupsModel')
+const TaskGroups = require('../models/taskgroupModel')
 //const jwt = require('jsonwebtoken')
 
 // const createToken = (_id) => {
