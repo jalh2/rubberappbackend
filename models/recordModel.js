@@ -42,11 +42,23 @@ const recordSchema = new Schema({
     type: String,
     required: true,
   },
+  farmgroupname: {
+    type: String,
+    required: true,
+  },
+  taskname: {
+    type: String,
+    required: true,
+  },
+  taskgroupname: {
+    type: String,
+    required: true,
+  }
 })
 
 
 // static insert method
-recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, buyingprice, farm_id) {
+recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVolume, dryrubberweight, date, time, buyingprice, farm_id, farmgroupname, taskname, taskgroupname) {
 
   const exists = await this.findOne({ tapperId: tapperId, date: new Date(date) })
 
@@ -60,12 +72,15 @@ recordSchema.statics.insert = async function( tapperName, tapperId, drc, latexVo
       exists.dryrubberweight = dryrubberweight;
       exists.farm_id = farm_id;
       exists.buyingprice = buyingprice;
+      exists.farmgroupname = farmgroupname;
+      exists.taskname = taskname;
+      exists.taskgroupname = taskgroupname;
   
       await exists.save(); // Save the updated record
       return exists; // Return the updated record
   }
 
-  const post = await this.create({tapperName, tapperId, drc, latexVolume, dryrubberweight, date: ndate, time: tdate, buyingprice, farm_id})
+  const post = await this.create({tapperName, tapperId, drc, latexVolume, dryrubberweight, date: ndate, time: tdate, buyingprice, farm_id, farmgroupname, taskname, taskgroupname})
 
   return post
 }
