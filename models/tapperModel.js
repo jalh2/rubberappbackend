@@ -65,5 +65,39 @@ tapperSchema.statics.deleteTapper = async function (id) {
   }
 };
 
+tapperSchema.statics.UpdateTapper = async function(_id, farmgroupname, taskname, taskgroupname) {
+  const filter = { _id: _id };
+  const update = {
+    farmgroupname: farmgroupname,
+    taskname: taskname,
+    taskgroupname: taskgroupname,
+  };
+
+  try {
+    const doc = await this.findOneAndUpdate(filter, update, {
+      new: true
+    });
+    return doc;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+tapperSchema.statics.GetTapperGroup = async function(farm_id, farmgroupname, taskname, taskgroupname) {
+  const filter = {
+    farm_id: farm_id,
+    farmgroupname: farmgroupname,
+    taskname: taskname,
+    taskgroupname: taskgroupname,
+  };
+
+  try {
+    let docs = await this.find(filter);
+    return docs;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 
 module.exports = mongoose.model('Tappers', tapperSchema, 'tappers')
