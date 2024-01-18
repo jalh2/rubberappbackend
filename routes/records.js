@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller functions
-const { insertRecord, getRecord, getRecords, deleteRecords,deleteOneRecord, getdailyRecords, getweeklyRecords, getmonthlyRecords } = require('../controllers/recordController')
+const { insertRecord, getRecord, getRecords, deleteRecords,deleteOneRecord, getdailyRecords, getweeklyRecords, getmonthlyRecords, getAllForOne } = require('../controllers/recordController')
 
 const router = express.Router()
 
@@ -13,6 +13,7 @@ router.post('/getweeklys', getweeklyRecords)
 router.post('/getmonthlys', getmonthlyRecords)
 router.get('/getonerecord/:recordId', getRecord)
 router.post('/getallrecords', getRecords)
+router.post('/getallforone', getAllForOne)
 router.get('/deleteallrecords/:id', deleteRecords)
 router.get('/deleteonerecord/:_id', deleteOneRecord)
 

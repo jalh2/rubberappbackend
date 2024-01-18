@@ -108,6 +108,18 @@ recordSchema.statics.getRecords = async function(tapperId, date) {
   return docs;
 }
 
+recordSchema.statics.getAllRecordsForOnePerson = async function(tapperId) {
+  const query = {
+    tapperId: tapperId,
+  };
+
+  const docs = await this.find(query)
+    .sort({ date: -1 }) // Sort by date in descending order (most recent to older)
+    .limit(100); // Limit the result to 100 records
+
+  return docs;
+};
+
 recordSchema.statics.getDailys = async function(date, farm_id) {
 
   let query = { date: new Date(date), farm_id: farm_id };

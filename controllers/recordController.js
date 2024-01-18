@@ -75,6 +75,18 @@ const getRecords = async (req, res) => {
   }
 }
 
+const getAllForOne = async (req, res) => {
+  const {tapperId} = req.body
+   console.log(tapperId+" "+date);
+   try {
+    const dataObj = await Records.getAllRecordsForOnePerson(tapperId)
+
+    res.status(200).json(dataObj)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+}
+
 const getRecord = async (req, res) => {
   const {recordId} = req.params
    console.log(recordId);
@@ -113,4 +125,4 @@ const deleteOneRecord = async (req, res) => {
 }
 
 
-module.exports = { insertRecord, getRecords, getRecord, deleteRecords, deleteOneRecord, getdailyRecords, getweeklyRecords, getmonthlyRecords }
+module.exports = { insertRecord, getRecords, getRecord, deleteRecords, deleteOneRecord, getdailyRecords, getweeklyRecords, getmonthlyRecords, getAllForOne }
