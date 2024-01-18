@@ -77,7 +77,7 @@ const getRecords = async (req, res) => {
 
 const getAllForOne = async (req, res) => {
   const {tapperId} = req.body
-   console.log(tapperId+" "+date);
+   console.log(tapperId);
    try {
     const dataObj = await Records.getAllRecordsForOnePerson(tapperId)
 
