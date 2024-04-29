@@ -3,9 +3,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const tapperSchema = new Schema({
-  id: {
+  tasknumber: {
     type: String,
     required: true,
+    unique: false,
   },
   name: {
     type: String,
@@ -34,15 +35,15 @@ const tapperSchema = new Schema({
 
 
 // static insert method
-tapperSchema.statics.insert = async function( name, id, farm_id) {
+tapperSchema.statics.insert = async function( name, tasknumber, farm_id) {
 
-  const exists = await this.findOne({ id })
-
+  const exists = await this.findOne({ name })
+  console.log("model view "+name+" "+tasknumber+" "+farm_id);
   if (exists) {
     throw Error('Record Already Inserted')
   }
 
-  const post = await this.create({name, id, farm_id})
+  const post = await this.create({name, tasknumber, farm_id})
 
   return post
 }
@@ -53,12 +54,12 @@ tapperSchema.statics.getAll = async function(farm_id) {
   return docs;
 }
 
-tapperSchema.statics.deleteTapper = async function (id) {
-  const exists = await this.findOne({ id });
+tapperSchema.statics.deleteTapper = async function (name) {
+  const exists = await this.findOne({ name });
 
   if (exists) {
     // Delete the record if it exists
-    const deletedRecord = await this.findOneAndDelete({ id });
+    const deletedRecord = await this.findOneAndDelete({ name });
     return deletedRecord;
   } else {
     throw Error('Record not found');
