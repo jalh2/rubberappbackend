@@ -60,11 +60,11 @@ const updateTapper = async (req, res) => {
 
 const getTapperGroup = async (req, res) => {
 
-  const { farm_id, farmgroupname, taskname, taskgroupname } = req.body;
-  console.log(farm_id+" "+farmgroupname+" "+taskname+" "+taskgroupname)
+  const { farm_id, farmgroupname, taskgroupname } = req.body;
+  console.log(farm_id+" "+farmgroupname+" "+taskgroupname)
   
   try {
-    const dataObj = await Tappers.GetTapperGroup(farm_id, farmgroupname, taskname, taskgroupname)
+    const dataObj = await Tappers.GetTapperGroup(farm_id, farmgroupname, taskgroupname)
 
     res.status(200).json(dataObj)
   } catch (error) {

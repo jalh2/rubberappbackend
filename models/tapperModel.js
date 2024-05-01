@@ -84,11 +84,10 @@ tapperSchema.statics.UpdateTapper = async function(_id, farmgroupname, taskname,
   }
 };
 
-tapperSchema.statics.GetTapperGroup = async function(farm_id, farmgroupname, taskname, taskgroupname) {
+tapperSchema.statics.GetTapperGroup = async function(farm_id, farmgroupname, taskgroupname) {
   const filter = {
     farm_id: farm_id,
     farmgroupname: farmgroupname,
-    taskname: taskname,
     taskgroupname: taskgroupname,
   };
 
