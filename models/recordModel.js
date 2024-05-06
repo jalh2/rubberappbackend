@@ -108,8 +108,9 @@ recordSchema.statics.getRecords = async function(tapperId, date) {
   return docs;
 }
 
-recordSchema.statics.getAllRecordsForOnePerson = async function(tapperId) {
+recordSchema.statics.getAllRecordsForOnePerson = async function(tapperName, tapperId) {
   const query = {
+    tapperName: tapperName,
     tapperId: tapperId,
   };
 

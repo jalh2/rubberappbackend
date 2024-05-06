@@ -76,10 +76,10 @@ const getRecords = async (req, res) => {
 }
 
 const getAllForOne = async (req, res) => {
-  const {tapperId} = req.body
-   console.log(tapperId);
+  const {tapperName, tapperId} = req.body
+   console.log(tapperId+" "+tapperName);
    try {
-    const dataObj = await Records.getAllRecordsForOnePerson(tapperId)
+    const dataObj = await Records.getAllRecordsForOnePerson(tapperName, tapperId)
 
     res.status(200).json(dataObj)
   } catch (error) {
